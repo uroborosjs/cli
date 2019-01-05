@@ -1,0 +1,24 @@
+{
+  "name": "cli",
+  "version": "0.0.1",
+  "description": "uroboros-cli, Creating and managing cyclejs apps using uroboros.",
+  "main": "lib/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uroborosjs/cli.git"
+  },
+  "author": "Michiel Kamphuis <mfk@kamphuis.eu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uroborosjs/cli/issues"
+  },
+  "homepage": "https://github.com/uroborosjs/cli#readme",
+  "devDependencies": {
+    "ava": "^1.0.1",
+    "typescript": "^3.2.2"
+  }
+}
