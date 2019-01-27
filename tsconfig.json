@@ -1,17 +1,22 @@
 {
-    "compilerOptions": {
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "target": "es5",
-        "module": "commonjs",
-        "declaration": true,
-        "outDir": "./lib",
-        "strict": true
-    },
-    "include": [
-        "src/**/*"
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [
+      "es2015",
+      "es2016",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules"
-    ]
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

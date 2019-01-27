@@ -1,0 +1,11 @@
+{
+  "extends": [ "tslint-immutable/all" ],
+  "rules":
+  {
+    "max-line-lenght":
+    {
+      "options": [80]
+    },
+    "no-any": true
+  }
+}
