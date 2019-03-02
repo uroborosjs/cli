@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
+    "baseUrl": "./src",
     "strictNullChecks": true,
-    "target": "es6",
+    "target": "es2015",
     "module": "commonjs",
     "lib": [
-      "es2015",
-      "es2016",
       "esnext"
     ],
     "declaration": true,
     "outDir": "./lib",
-    "strict": true
+    "strict": true,
+    "paths": {
+      "utils/*": [ "utils/*" ]
+    }
   },
   "include": [
     "src/**/*"

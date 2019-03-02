@@ -1,13 +1,5 @@
 import { statSync } from 'fs'
 
-type Path = string
-
-type DirectoryExists =
-  (path: Path) => boolean
-const directoryExists: DirectoryExists =
-  (path) =>
-    statSync(path).isDirectory()
-
 type AppName = string
 type Flavor =
   'browser'
