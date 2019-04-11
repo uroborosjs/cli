@@ -3,7 +3,6 @@ import
 } from 'lambal'
 import
 { InitArg
-, Platform
 , Question
 } from './types'
 
@@ -12,24 +11,17 @@ import
 } from 'utils/path'
 
 type FilePath = string
-type FetchFile =
-  (platform: Platform) =>
-    (location: FilePath) => FilePath
-const fetchFile: FetchFile =
-  (platform) =>
-    (location) =>
-      (platform === 'local') ? forceAbsolutePath(`${location}/uroboros.js`)
-      : ''
-
 type ImportFile<T> = (filePath: FilePath) => Promise<T>
 const importFile: ImportFile<any> = (filePath: FilePath) => import(filePath)
 
-type FetchAndImport = (platform: Platform) => (locaction: string) => Promise<UroborosExports>
+type MakeLocalPath = (outDir: string) => string
+const makeLocalPath: MakeLocalPath = (outDir: string) => forceAbsolutePath(`${outDir}/uroboros.js`)
+
+type FetchAndImport = (outDir: string) => Promise<UroborosExports>
 const fetchAndImport: FetchAndImport =
-  (platform) =>
-    F.compose
-    (importFile)
-    (fetchFile(platform))
+  F.compose
+  (importFile)
+  (makeLocalPath)
 
 type UroborosExports =
   { questions: Question[]
@@ -37,7 +29,7 @@ type UroborosExports =
   }
 type FetchUroboros = <T extends InitArg>(initArg: T) => Promise<UroborosExports>
 const fetchUroboros: FetchUroboros =
-  async ({platform, project}) => fetchAndImport(platform) (project)
+  async ({outDir}) => fetchAndImport (outDir)
 
 export
 { UroborosExports

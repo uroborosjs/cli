@@ -1,4 +1,4 @@
-import * as prompts from 'prompts'
+import prompts from 'prompts'
 import
 { F
 , A
