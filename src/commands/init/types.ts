@@ -5,11 +5,11 @@ type Platform =
 // "<namespace>/<project>" || "path/to/project"
 type Project = string
 
-type NameArg = Record<'name', string>
+type OutDirArg = Record<'outDir', string>
 type PlatformArg = Record<'platform', Platform>
 type ProjectArg = Record<'project', Project>
 type InitArg =
-  NameArg
+  OutDirArg
   & PlatformArg
   & ProjectArg
 
@@ -19,7 +19,7 @@ type Question =
   }
 
 export
-{ NameArg
+{ OutDirArg
 , PlatformArg
 , ProjectArg
 , Platform

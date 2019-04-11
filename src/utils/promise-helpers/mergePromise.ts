@@ -1,7 +1,7 @@
-import { merge } from 'rambda'
+import { O } from 'lambal'
 
 type MergePromise =
-  <T, R>(fn: (a:T) => R) =>
+  <T, R>(fn: (a:T) => Promise<R>) =>
     (value: T) =>
       Promise<T & R>
 const mergePromise: MergePromise =
@@ -9,7 +9,7 @@ const mergePromise: MergePromise =
     (value) =>
       Promise.resolve(value)
         .then(fn)
-        .then((fnOut:any) => merge(fnOut, value))
+        .then((fnOut) => O.merge (fnOut) (value))
 
 export
 { mergePromise

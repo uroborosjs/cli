@@ -1,6 +1,6 @@
 import
-{ compose
-} from 'rambda'
+{ F
+} from 'lambal'
 import
 { InitArg
 , Platform
@@ -27,19 +27,19 @@ const importFile: ImportFile<any> = (filePath: FilePath) => import(filePath)
 type FetchAndImport = (platform: Platform) => (locaction: string) => Promise<UroborosExports>
 const fetchAndImport: FetchAndImport =
   (platform) =>
-    compose
-    ( importFile
-    , fetchFile(platform)
-    )
+    F.compose
+    (importFile)
+    (fetchFile(platform))
 
 type UroborosExports =
   { questions: Question[]
   , setup: (obj: object) => void
   }
-type FetchUroboros = (initArg: InitArg) => Promise<UroborosExports>
+type FetchUroboros = <T extends InitArg>(initArg: T) => Promise<UroborosExports>
 const fetchUroboros: FetchUroboros =
   async ({platform, project}) => fetchAndImport(platform) (project)
 
 export
-{ fetchUroboros
+{ UroborosExports
+, fetchUroboros
 }

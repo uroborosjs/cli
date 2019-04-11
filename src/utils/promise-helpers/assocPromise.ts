@@ -1,17 +1,17 @@
-import { assoc } from 'rambda'
+import { O } from 'lambal'
 
 type AssocPromise =
-  <P extends string>(propery: P) =>
-    <T, R>(fn: (a:T) => R) =>
-      (value: T) =>
-        Promise<T & Record<P, R>>
+  <P extends string>(property: P) =>
+    <T, R>(fn: (a:T) => Promise<R>) =>
+      <V extends T>(value: V) =>
+        Promise<V & Record<P, R>>
 const assocPromise: AssocPromise =
   (property) =>
     (fn) =>
       (value) =>
         Promise.resolve(value)
           .then(fn)
-          .then((fnOut:any) => assoc(property, fnOut, value))
+          .then((fnOut) => O.assoc(property) (fnOut) (value))
 
 export
 { assocPromise

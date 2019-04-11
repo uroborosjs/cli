@@ -1,4 +1,6 @@
-type TapPromise = <T>(fn: (arg:T) => any) => (val:T) => Promise<T>
+import { Function } from 'lambal'
+
+type TapPromise = <T>(fn: Function<T, any>) => <V extends T>(val: V) => Promise<V>
 const tapPromise: TapPromise =
   (fn) => 
     (val) =>

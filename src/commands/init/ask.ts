@@ -1,8 +1,8 @@
 import * as prompts from 'prompts'
 import
-{ compose
-, map
-} from 'rambda'
+{ F
+, A
+} from 'lambal'
 
 import
 { Question
@@ -25,11 +25,11 @@ const makeProperQuestion: MakeProperQuestion =
 type Answers = { [ index: string]: string }
 type Ask = (questions: Question[]) => Promise<Answers>
 const ask: Ask =
-  compose<any, any, any>
-  ( prompts
-  , map(makeProperQuestion)
-  )
+  F.compose
+  (prompts)
+  (A.map(makeProperQuestion))
 
 export
 { ask
+, Answers
 }
