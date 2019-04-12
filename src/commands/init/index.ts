@@ -39,9 +39,9 @@ const init: Init =
     Promise
       .resolve(arg)
       .then(tapPromise(guard))
+      .then(tapPromise(fetchProject))
       .then(mergePromise(fetchUroboros))
       .then(assocPromise('answer') (askQueststiones))
-      .then(tapPromise(fetchProject))
       .then(tapPromise(switchToNewProjectDir))
       .then(tapPromise(run))
       .then(() => {})

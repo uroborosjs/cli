@@ -1,21 +1,53 @@
 import { copy } from 'fs-extra'
+// import * from './../../types/download-git-repo'
+import download from 'download-git-repo'
 import { forceAbsolutePath } from 'utils/path'
 import
-{ OutDirArg
+{ InitArg
+, OutDirArg
+, BranchArg
 , PlatformArg
 , ProjectArg
 } from './types'
 
+type ConstructGitLocation = (fetchArg: FetchArg) => string
+const constructGitLocation: ConstructGitLocation =
+  ({platform, repo, branch}) =>
+    branch === undefined
+      ? `${platform}:${repo}`
+      : `${platform}:${repo}#${branch}`
+
 type Folder = string
-type GitSite = 'github' | 'gitlab' | 'bucket'
-type Branch = 'string'
-type Repo = string
+type Repo =
+  Record<'repo', string>
+type FetchArg =
+  PlatformArg
+  & Repo
+  & Partial<BranchArg>
 type FetchGitApp =
-  (newApp: Folder) =>
-    ( gitSite: GitSite
-    , repo: Repo
-    , branch: Branch | false
-    ) => Promise<true>
+  (newAppLocation: Folder) =>
+    (fetchArg: FetchArg) => Promise<void>
+
+const LY = (val:any) => { console.error(val); return val}
+const fetchGitApp: FetchGitApp =
+  (newAppLocation) =>
+    ({platform, repo, branch}) =>
+      new Promise
+          ( (res, rej) => {
+              console.log(platform, repo, branch)
+              download
+              ( LY(constructGitLocation
+                ( { platform
+                  , repo
+                  , branch
+                  }
+                )
+                   )
+              , newAppLocation
+              , (err: any) => { err ? rej(err) : res() }
+              )
+            }
+          )
 
 type PathArg =
   OutDirArg
@@ -28,15 +60,11 @@ const fetchLocal: FetchLocal =
     return copy(srcDirPath, outDirPath)
   }
 
-type FetchProjectArg =
-  OutDirArg
-  & PlatformArg
-  & ProjectArg
-type FetchProject = (obj: FetchProjectArg) => Promise<void>
+type FetchProject = (obj: InitArg) => Promise<void>
 const fetchProject: FetchProject =
-  ({platform, project, outDir}) =>
-    platform === 'local' ? fetchLocal({project, outDir})
-    : Promise.resolve()
+  ({outDir, method, project, branch}) =>
+    method === 'local' ? fetchLocal({project, outDir})
+    : fetchGitApp(outDir) ({platform: method, repo: project, branch})
 
 export
 { fetchProject

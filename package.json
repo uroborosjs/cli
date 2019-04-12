@@ -23,9 +23,8 @@
     "@types/fs-extra": "^5.0.5",
     "@types/node": "^10.12.18",
     "@types/prompts": "^1.2.0",
-    "ava": "^1.0.1",
-    "ts-node": "^8.0.2",
-    "ts-node-dev": "^1.0.0-pre.32",
+    "ava": "^1.4.1",
+    "ts-node": "^8.0.3",
     "tsconfig-paths": "^3.8.0",
     "tslint-immutable": "^5.0.1",
     "typescript": "^3.2.2"
