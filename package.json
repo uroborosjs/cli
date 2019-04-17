@@ -1,6 +1,6 @@
 {
   "name": "cli",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "uroboros-cli, Creating and managing cyclejs apps using uroboros.",
   "main": "lib/index.js",
   "types": "src/index.ts",
@@ -8,11 +8,16 @@
     "cli": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev": "ts-node -r tsconfig-paths/register $1",
     "build": "tsc",
-    "test": "ava src/**/*.test.ts"
+    "test": "ava src/**/*.test.ts",
+    "prepare": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uroborosjs/cli.git"
+  },
+  "bin": {
+    "uro": "./lib/index.js"
   },
   "author": "Michiel Kamphuis <mfk@kamphuis.eu>",
   "license": "MIT",
@@ -22,19 +27,19 @@
   "homepage": "https://github.com/uroborosjs/cli#readme",
   "devDependencies": {
     "@types/fs-extra": "^5.0.5",
-    "@types/node": "^10.12.18",
+    "@types/node": "^10.14.4",
     "@types/prompts": "^1.2.0",
     "ava": "^1.4.1",
     "ts-node": "^8.0.3",
     "tsconfig-paths": "^3.8.0",
     "tslint-immutable": "^5.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.4.3"
   },
   "dependencies": {
     "download-git-repo": "^1.1.0",
     "fs-extra": "^7.0.1",
-    "lambal": "0.0.1",
-    "prompts": "^2.0.1"
+    "lambal": "0.1.0",
+    "prompts": "^2.0.4"
   },
   "ava": {
     "compileEnhancements": false,
