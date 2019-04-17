@@ -1,6 +1,6 @@
 {
   "name": "cli",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "uroboros-cli, Creating and managing cyclejs apps using uroboros.",
   "main": "lib/index.js",
   "types": "src/index.ts",
@@ -8,7 +8,9 @@
     "cli": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev": "ts-node -r tsconfig-paths/register $1",
     "build": "tsc",
-    "test": "ava src/**/*.test.ts"
+    "test": "ava src/**/*.test.ts",
+    "prepare": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
