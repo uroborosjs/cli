@@ -10,6 +10,7 @@ import
 
 import
 { InitArg
+, Question
 } from './types'
 import { guard } from './guard'
 import { fetchUroboros } from './fetchUroboros'
@@ -18,7 +19,8 @@ import { fetchProject } from './fetchProject'
 import { run } from './run'
 import { forceAbsolutePath } from 'utils/path';
 
-const askQueststiones =
+type AskQuestions = (arg: {questions: Question[]}) => Promise<any>
+const askQueststiones: AskQuestions =
   F.compose
   (ask)
   (O.prop ('questions'))
@@ -28,10 +30,11 @@ const switchRootDir =
   (process.chdir)
   (forceAbsolutePath)
 
-const switchToNewProjectDir =
+type SwitchToNewProjectDir = (arg: {outDir: string}) => void
+const switchToNewProjectDir: SwitchToNewProjectDir =
   F.compose
   (switchRootDir)
-  (O.prop('outDir'))
+  (O.prop ('outDir'))
 
 type Init = (arg: InitArg) => Promise<void>
 const init: Init =
