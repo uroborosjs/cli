@@ -24,7 +24,6 @@
     "@types/fs-extra": "^5.0.5",
     "@types/node": "^10.12.18",
     "@types/prompts": "^1.2.0",
-    "@types/yargs": "^13.0.0",
     "ava": "^1.4.1",
     "ts-node": "^8.0.3",
     "tsconfig-paths": "^3.8.0",
@@ -37,8 +36,7 @@
     "lambal": "0.0.1",
     "prompts": "^2.0.1",
     "rambda": "^2.3.2",
-    "shades": "^2.0.0",
-    "yargs": "^13.2.1"
+    "shades": "^2.0.0"
   },
   "ava": {
     "compileEnhancements": false,
