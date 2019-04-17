@@ -34,9 +34,7 @@
     "download-git-repo": "^1.1.0",
     "fs-extra": "^7.0.1",
     "lambal": "0.0.1",
-    "prompts": "^2.0.1",
-    "rambda": "^2.3.2",
-    "shades": "^2.0.0"
+    "prompts": "^2.0.1"
   },
   "ava": {
     "compileEnhancements": false,
