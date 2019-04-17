@@ -1,18 +1,24 @@
-// import { formatArgs } from './formatArgs'
-// import { createCycleApp } from './init'
+import { runHelp } from './help'
+import { runInit } from './runInit'
 
 const args = process.argv.slice(2)
 
-const possibleCommands =
-  { init:
-    { 
-    }
+type PossibleCommands =
+  { [index: string]: any
+  }
+const possibleCommands: PossibleCommands =
+  { init: runInit
+  , help: runHelp
   }
 
 if ( args.length > 0 ) {
-  // const formattedArgs = formatArgs(args)
-  // console.log(formattedArgs)
-  console.log(args[0])
+  const [ command, ...restArgs ] = args
+  const runCommand = possibleCommands[command]
+  if (runCommand !== undefined) {
+    runCommand(...restArgs)
+  } else {
+    console.log('Not a valid Command!')
+  }
 } else {
   console.log('You need to specify a command!')
 }
