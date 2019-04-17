@@ -1,8 +1,7 @@
 import
-{ compose
-} from 'rambda'
-
-const prefix = (pre: string) => (val: string) => `${pre}/${val}`
+{ F
+, S
+} from 'lambal'
 import
 { InitArg
 } from './types'
@@ -15,10 +14,9 @@ const secondGuard = promiseIfy
 const thirdGuard = rejectIfy
 
 const trGuard =
-  compose
-  ( thirdGuard
-  , prefix('Error:')
-  )
+  F.compose
+    (thirdGuard)
+    (S.prefix('Error:'))
 
 type Guard = (initArg: InitArg) => Promise<void>
 const guard: Guard =
