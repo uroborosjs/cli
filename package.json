@@ -16,6 +16,9 @@
     "type": "git",
     "url": "git+https://github.com/uroborosjs/cli.git"
   },
+  "bin": {
+    "uro": "./lib/index.js"
+  },
   "author": "Michiel Kamphuis <mfk@kamphuis.eu>",
   "license": "MIT",
   "bugs": {
