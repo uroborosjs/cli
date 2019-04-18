@@ -6,7 +6,7 @@ import
 { tapPromise
 , assocPromise
 , mergePromise
-} from 'utils/promise-helpers'
+} from '../../utils/promise-helpers'
 
 import
 { InitArg
@@ -17,7 +17,7 @@ import { fetchUroboros } from './fetchUroboros'
 import { ask } from './ask'
 import { fetchProject } from './fetchProject'
 import { run } from './run'
-import { forceAbsolutePath } from 'utils/path';
+import { forceAbsolutePath } from '../../utils/path';
 
 type AskQuestions = (arg: {questions: Question[]}) => Promise<any>
 const askQueststiones: AskQuestions =

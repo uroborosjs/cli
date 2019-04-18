@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { runHelp } from './help'
 import { runInit } from './runInit'
 

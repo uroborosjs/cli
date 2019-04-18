@@ -1,7 +1,6 @@
 import { copy } from 'fs-extra'
-// import * from './../../types/download-git-repo'
 import download from 'download-git-repo'
-import { forceAbsolutePath } from 'utils/path'
+import { forceAbsolutePath } from '../../utils/path'
 import
 { InitArg
 , OutDirArg

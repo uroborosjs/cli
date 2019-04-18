@@ -1,3 +1,5 @@
 .#*
+.cache
+bin
 node_modules/
 lib
