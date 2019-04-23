@@ -8,7 +8,7 @@ import
 
 import
 { forceAbsolutePath
-} from 'utils/path'
+} from '../../utils/path'
 
 type FilePath = string
 type ImportFile<T> = (filePath: FilePath) => Promise<T>
