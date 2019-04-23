@@ -1,6 +1,6 @@
 {
   "name": "@uroboros/cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "uroboros-cli, Creating and managing cyclejs apps using uroboros.",
   "main": "lib/index.js",
   "types": "src/index.ts",
